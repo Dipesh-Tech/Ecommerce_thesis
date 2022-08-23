@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container col-md-7 text-dark">
+  {% if search != '' %}
+  <h4 class="ps-4 text-dark mb-5">Results for: <b>{{ search | title }}</b></h4>
+  <div class="row">
+    <!-- This Column shows results from Flipkart -->
+    <div class="col">
+      <!-- <h4 class="text-center text-dark" ><strong>Daraz</strong></h4> -->
+      <img
+        class="ms-5 ps-5"
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.mdHrU5s6ysqeV5dlka4MMQHaCi%26pid%3DApi&f=1"
+        alt=""
+        style="width: 38%; height: 60px"
+      />
+      {% for post in final_postings %}
+      <div class="col text-center">
+        <div class="card">
+          <img
+            src="{{ post.3 }}"
+            class="card-img-top p-3"
+            alt="Fissure in Sandstone"
+            style="height: 300px;"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ post.0 }}</h5>
+            <p>Price: {{ post.2 }}</p>
+            <a href="{{ post.1 }}" class="btn btn-primary">View Listing</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    <!-- This Column shows results from Amazon -->
+    <div class="col">
+      <!-- <h4 class="ms-5 ps-2 text-dark fw-bold" >Sastodeal</h4> -->
+      <img
+        class="ms-5 ps-5 mb-2"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjyXdpebWeHLM8gVXoiYJbwmrf5L3LDJJUxw&usqp=CAU"
+        alt=""
+        style="width: 58%"
+      />
+      {% for post in final_postingstwo %}
+      <div class="col text-center w-100">
+        <div class="card text-center">
+          <img
+            src="{{ post.3 }}"
+            class="card-img-top p-3 text-center ms-5"
+            alt="Fissure in Sandstone"
+            style="height: 300px; width: 80%;"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ post.0 }}</h5>
+            <p>Price: {{ post.2 }}</p>
+            <a href="{{ post.1 }}" class="btn btn-primary">View Listing</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% else %}
+  <div class="img text-center">
+    <h5 class="text text-secondary text-center">
+      Search, Compare and Buy Products.
+    </h5>
+    <img
+      src="https://cdn.dribbble.com/users/1501052/screenshots/5468049/searching_tickets.gif"
+      class="text-center"
+      style="height: 60%"
+      alt=""
+    />
+  </div>
+
+  {% endif %}
+</div>
+{% endblock content %}
